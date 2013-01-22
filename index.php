@@ -1,14 +1,14 @@
 <?php
 
 /**
+* Define ROOT of the Multiverse framework
+*/
+define("ROOT", "/");
+
+/**
 * Define BASE with DOCUMENT_ROOT
 */
 define("BASE", $_SERVER['DOCUMENT_ROOT']);
-
-/**
-* Define ROOT of the Multiverse framework
-*/
-define("ROOT", "/multiverse/0.1/");
 
 /**
 * Define SYSTEM of the Multiverse core framework folder.

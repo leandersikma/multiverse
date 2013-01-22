@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>Debugger tool - Multiverse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -123,31 +123,18 @@
 				if(method == "get") {
 					$(".debugData").show();
 					$.get(url, function(data) {
+						console.log(data);
 					  $('#debugData').html("<pre>" + syntaxHighlight(data) + "</pre>");
 					  
 					});
 				} else if(method == "post") {
 					var post = $("#postData").val();
-					/*
-var postArray = post.split("&");
-					var keyValues = new Array();
-					for(value in postArray) {
-						tempArray = postArray[value].split("=");
-						keyValues[tempArray[0]] = tempArray[1];
-					}
-*/
 					
 					$.post(url, post,
 					  function(data) {
 					     $('#debugData').html("<pre>" + syntaxHighlight(data) + "</pre>");
 					});
-					
-					
-					
-				
-					// Todo ajax call post
-				} else {
-					
+
 				}
 				
 				
