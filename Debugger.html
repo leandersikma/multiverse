@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Documentation | Multiverse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <style type="text/css">
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      
+      .itemImage {
+	      height: 300px;
+	      background-position-y: top;
+      }
+      
+      .carousel-caption {
+	      margin-top: 100px;
+      }
+      
+      .carousel .item {
+	      height: 300px;
+	  }
+	  
+	  @media (max-width: 979px) {
+	  .itemImage {
+	      height: 200px;
+	      background-position-y: top;
+      }
+      
+      .carousel-caption {
+	      margin-top: 50px;
+      }
+      
+      .carousel .item {
+	      height: 200px;
+	  }
+	  
+	  }
+	  
+	  @media (max-width: 767px) {
+	  	.itemImage {
+	      height: 100px;
+	      background-position-y: top;
+      }
+      
+      .carousel-caption {
+	      margin-top: 10px;
+      }
+      
+      .carousel .item {
+	      height: 100px;
+	  }
+	  
+	  .carousel {
+		  margin-bottom: 20px;
+	  }
+	  }
+    </style>
+  
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <script src="js/javascript.js"></script>
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="index.html">Multiverse</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="index.html">Home</a></li>
+              <li class="active"><a href="docs.html">Docs</a></li>
+              <li><a href="Philosophy.html">Philosophy of Multiverse</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    
+    
+    <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+          <div class="itemImage"></div>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Multiverse</h1>
+              <p class="lead">And API and web framework packed in one thing!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav" id="navBar">
+
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+          	<div class="page-header">
+          		<h1>Media</h1>
+          	</div>
+          	
+      		<p>Multiverse comes with a neat debug tool to simply debug your API, created with Multiverse. To reach this debug tool, go to:
+      		</p>
+      		
+      		<pre>yourdomain/pathToMultiverse/debug</pre>
+      		
+      		<h3>How to debug</h3>
+      		
+      		<p>Inside the debugger tool you can post the path to your API class, such as: <code>yourdomain/api/new/get/</code>.</p>
+      		
+      		<p>After you have defined the path to the class you want to debug, you could setup the header configurations. At this moment, Multiverse only support <strong>GET</strong> and <strong>POST</strong> requests.</p>
+      		
+      		<p>If you want to test the class by GET request, use the GET request. Otherwise, you need to config the POST header values.</p>
+      		
+      		<h3>Config POST request</h3>
+      		
+      		<p>If you want to test your API class by sending a POST request, you have to send POST values with it. If you choose inside the debugger for POST request, you get an extra textarea which you can fill with data.</p>
+      		
+      		<p>You need to know what your API class expects concerning the data. So look at all the <code>$request['key']</code> parts inside you class function. The only thing that you should do inside the debugger is to fill all those request keys with your values. You should format is as:</p>
+      		
+      		<pre>key=value&key=value&key=value</pre>
+      		
+      		<p>An example would be:</p>
+      		
+      		<pre>
+title=I'm trying Multiverse!&description=An API centric development framework
+
+Which you can read in your API class function by doing the following:
+
+$request['title'];
+$request['description'];
+      		</pre>
+      		
+      		<h3>Result debugger</h3>
+      		
+      		<p>Because Multiverse is using CURL to perform GET and POST requests to and from the API, it is sometimes difficult to simply debug your API class. After you configured the debugger and send the request, you get a result. This result could be everything. Such common results are: JSON response, PHP error, HTML output.</p>
+      		
+      		<p>We hope that your experience with building an API is going to be much better by using this debugger.</p>
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2012 Multiverse is created by <a href="http://leandersikma.com" title="Leander Sikma | Web and App developer">Leander Sikma</a> &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+  </body>
+</html>

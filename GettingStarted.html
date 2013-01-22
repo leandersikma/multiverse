@@ -1,0 +1,415 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Documentation | Multiverse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <style type="text/css">
+
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      
+      .itemImage {
+	      height: 300px;
+	      background-position-y: top;
+      }
+      
+      .carousel-caption {
+	      margin-top: 100px;
+      }
+      
+      .carousel .item {
+	      height: 300px;
+	  }
+	  
+	  @media (max-width: 979px) {
+	  .itemImage {
+	      height: 200px;
+	      background-position-y: top;
+      }
+      
+      .carousel-caption {
+	      margin-top: 50px;
+      }
+      
+      .carousel .item {
+	      height: 200px;
+	  }
+	  
+	  }
+	  
+	  @media (max-width: 767px) {
+	  	.itemImage {
+	      height: 100px;
+	      background-position-y: top;
+      }
+      
+      .carousel-caption {
+	      margin-top: 10px;
+      }
+      
+      .carousel .item {
+	      height: 100px;
+	  }
+	  
+	  .carousel {
+		  margin-bottom: 20px;
+	  }
+	  }
+    </style>
+  
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <script src="js/javascript.js"></script>
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="index.html">Multiverse</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="index.html">Home</a></li>
+              <li class="active"><a href="docs.html">Docs</a></li>
+              <li><a href="Philosophy.html">Philosophy of Multiverse</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    
+    
+    <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+          <div class="itemImage"></div>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Multiverse</h1>
+              <p class="lead">And API and web framework packed in one thing!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav" id="navBar">
+
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+          	<div class="page-header">
+          		<h1>Getting Started with Multiverse</h1>
+          	</div>
+          	
+          	<p>If you have successfully installed Multiverse on your shared hosting you see a welcome page of Multiverse in front of you! In this Getting Started you are going to make a blog, API Centric,  with Multiverse. First of all, we are going to setup our API.</p>
+          	
+          	<h3>API First!</h3>
+          	<p>We always start developing with Multiverse with an API First approach. This forces you to develop everything on top of the API. First, we create a controller inside the API controller map, name it <code>news.php</code> and put the following code in the file:</p>
+          	
+          	<pre>
+class News extends ApiCore {
+	
+	public function __construct() {
+		parent::__construct();
+	}
+	
+	public function get() {
+		return json_encode("getItems");
+		// Get all items
+	}
+	
+	public function create() {
+		// Create new post
+	}
+	
+}</pre>
+
+		<dl>
+		  <dt>Function: __construct()</dt>
+		  <dd>We override the parent constructor with our own constructor, but call the parent constructor immediately.</dd>
+		  
+		  <dt>Function: get()</dt>
+		  <dd>We use this function to get all the news items. If you want to output something, you need to encapsulate the result with json_encode() and return it.</dd>
+		  
+		  <dt>Function: create()</dt>
+		  <dd>We use the create() function to create a new news item.</dd>
+		</dl>
+          	
+			<p>Check if your API works perfectly by opening the debugger: <code>yourdomain/pathToMultiverse/debug/</code>. Put in the URL field: <code>api/news/get/</code>. Check if the response is <strong>getItems</strong>.</p>
+			
+		<p>Now we are going to setup the database and build the model.</p>
+		
+		<h3>Setting up the database</h3>
+		
+		<p>Create a new database on your localhost (or use an existence). Go to <code>application/config/config.php</code> and configure the settings to your own settings.</p>
+		
+		<p>Before querying the database, we need to create a database scheme. Execute the SQL command below, to create a database table for this tutorial.</p>
+		<pre>
+CREATE TABLE `News` (
+`news_id` INT NOT NULL AUTO_INCREMENT ,
+`news_title` TEXT NOT NULL ,
+`news_description` TEXT NOT NULL ,
+`news_timestamp` INT ( 11 ) NOT NULL ,
+PRIMARY KEY (  `news_id` )
+);</pre>
+         
+        <p>You have created the connection with your database and created a database table. Now it's time to create a model that talks to that newly created database table, so we can store data in it.</p>
+        
+        <h3>Using the model</h3>
+        
+        <p>Multiverse comes with a simple database model to execute simple SQL queries. To find more about this database model and how to create a custom one, go to: <a href="APIModels.html">API Models</a>.</p>
+
+        <p>In this example we are going to use the standard model inside our controller. The standard model is already loaded in our <strong>News</strong> controller because it extends the <strong>ApiCore</strong>, which is a parent class of all the API controller classes. In this class, the standard DB model is already instantiated.</p>
+        
+        <p>With the database class, we can fill in the functions: get() and create().</p>
+        
+        <pre>
+public function get() {
+	return json_encode($this->db->selectFields("News"));
+}
+
+public function create($request) {
+	$input['news_title'] = $request['title'];
+	$input['news_description'] = $request['description'];
+	$input['news_timestamp'] = time();
+	
+	return $this->db->insert("News", $input);
+}
+        </pre>
+        
+        <dl>
+		  <dt>Function: get()</dt>
+		  <dd>We use the standard function selectFields() to get all the data out of the table: "News". The result of this query is an array, which we are returning to client encapsulated with the function json_encode().</dd>
+		  
+		  <dt>Function: create($request)</dt>
+		  <dd>The create function is going to use the $request parameter to get $_POST data from the headers. You need to put this post data in a new array with the key's of this array the same as the database table columns. A column in the database is called: news_title. So the key in the array with the news title data should be named as 'news_title'. After all we use the database class to put the array in the correct table.</dd>
+		</dl>
+        
+        <h3>It is time to test!</h3>
+        
+        <p>Testing your newly created API is important as building one, so it is time to use the debugger again. A few sections ago, we meet the integrated debugger for a get request. For now we are going to use the debugger to send a POST request to the API.</p>
+        
+        <p>Go to <code>yourdomain/pathToMultiverse/debug/</code> and put in the URL field: <code>api/news/create/</code>. Before we execute the debugger, change the header to 'POST'. There comes an extra field visible which we will use to put in our test data.</p>
+        
+        <pre>
+title=Item&description=Lorem Ispum dolor sit amet, consecteteur adipiscing elit.</pre>
+        
+        <p>Submit the form and you get a number 1 back, which says that the execution is succeeded! Check your database to see if their is a new row added. For more information about the debugger, go to: <a href="Debugger.html">Debug API</a></p>
+        		
+        <p>If you made it here, you learned a new approach in developing web applications called: API Centric Development. It's time to create the backend system of your blog to communicate with the API.</p>
+		
+		<h3>Creating the backend</h3>
+		
+		<p>Create a new controller in the <code>application/controllers/</code> folder, named <code>News.php</code>. Put the following code inside this file:</p>
+		
+		<pre>
+class News extends MV_Controller {
+	
+	public function __construct() {
+		parent::__construct();
+	}
+	
+	public function index() {
+		
+	}
+}			
+		</pre>
+        <p>NOTE: This controller extends the MV_Controller and call the parent constructor to instantiate some standard classes. Do this always when you create a new application controller class.</p>
+        
+        <h4>Creating a view</h4>
+        
+        <p>Before we go further with the backend, we need to create a view with a form to create a new blog item. Create a new file called <code>newsCreate.php</code> inside <code>application/view</code></p>
+        
+        <p>Put the HTML below inside this file:<p>
+        
+        <pre>
+&lt;html>
+	&lt;head>
+		&lt;base href="<?php echo BASEURL; ?>">
+		&lt;link href="media/bootstrap/css/bootstrap.css" rel="stylesheet">
+		&lt;link href="media/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+		
+		&lt;script src="media/javascript/jquery-1.8.3.min.js"></script>
+		&lt;script src="media/bootstrap/js/bootstrap.min.js"></script>
+	&lt;/head>
+	
+	&lt;body>
+		&lt;div class="hero-unit">
+			&lt;form action="news/create" method="POST" class="form-horizontal">
+				&lt;div class="control-group">
+					&lt;label class="control-label" for="title">News Title</label>
+					&lt;div class="controls">
+						&lt;input type="text" placeholder="News Title" name="title" id="title" >
+					&lt;/div>
+				&lt;/div>
+				
+				&lt;div class="control-group">
+					&lt;label class="control-label" for="description">News Description</label>
+					&lt;div class="controls">
+						&lt;textarea name="description" rows="5" placeholder="News description"></textarea>
+					&lt;/div>
+				&lt;/div>
+				
+				&lt;div class="control-group controls">
+					&lt;input type="submit" class="btn" value="Create news item!" />
+				&lt;/div>
+			&lt;/form>
+		&lt;/div>
+	&lt;/body>
+&lt;/html>
+        </pre>
+        
+        <p>The above mentioned HTML template is build with Twitter Bootstrap. Multiverse is highly using the Twitter Bootstrap to design simple front-end views. It is not required to use Twitter Bootstrap, but it simplify your life as a developer.</p>
+        
+        <p>After you created the <code>createView.php</code>, we need to place it in our news controller inside the create function.</p>
+        
+        <pre>
+public function create() {
+	if($_POST) {
+		// POST call to the API: api/news/create/
+	} else {
+		$this->load->view("newsCreate");
+	}
+}
+        </pre>
+         
+         <p>It is not the best example to check whether a form is already send, but we keep it simply to focus only on the framework.</p>
+         
+         <p>If the user fills in the data for 'News Title' and 'News Description', we have to post that data to our newly created API: <code>api/news/create/</code>. By doing this, we need to update our create() function.</p>
+         
+         <pre>
+public function create() {
+	if($_POST) {
+		// POST call to the API: api/news/create
+		$params = $this->handling->getParams(array("title", "description"));
+		$this->load->call('api/news/create', $params);
+		$this->load->redirect('news');
+	} else {
+		$this->load->view("newsCreate");
+	}
+}</pre>
+         
+         <p>Looking at the code, you see that we use the Handling class to get specific parameters and put that in a variable (array). This variable will we send to the API controller, which is executed in the second rule with the Loader class. The first parameter of $this->load->call() is the path to the API controller/function, second parameter is the array with data that will be putted into the database.</p>
+         
+         <h4>Fill in the form</h4>
+         
+         <p>Go to your form: <code>yourdomain/pathToMultiverse/news/create</code> and fill it in with data. After you submitted the form, your data will be send to the API and placed in the database. After everything is executed, you will be send back to the introduction view of the news controller via a redirect. To create our last part of our mini news blog, we should create a front-end to view our news items.</p>
+         
+         <h3>Create the front-end</h3>
+         
+         <p>It is time to fill in the index() function, so the user could see all the blogposts that are saved to the database. First we need to get all the data and send it to a view, which will generate the HTML output that will be shown to the client.</p>
+         
+         <p>Fill in the index() function as follow:</p>
+         
+         <pre>
+public function index() {
+	$view['newsItems'] = $this->load->call('api/news/get/');
+	$this->load->view('news', $view);
+}</pre>
+		<p>We execute a call to the API: <code>api/news/get/</code> to get all the news items and save the items in an array with the key: 'newsItems'. We load a view, which we will create after this step, and send the array with it. All the keys in the array will be available as variable, so we can use the variable $newsItems inside our view.</p>
+		
+		<h4>Create the news view</h4>
+		
+		<p>Create a new file inside <code>application/view</code> called <code>news.php</code>. This view has to contain the following content:</p>
+		
+		<pre>
+&lt;html>
+	&lt;head>
+		&lt;base href="<?php echo BASEURL; ?>">
+		&lt;link href="media/bootstrap/css/bootstrap.css" rel="stylesheet">
+		&lt;link href="media/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+		
+		&lt;script src="media/javascript/jquery-1.8.3.min.js"></script>
+		&lt;script src="media/bootstrap/js/bootstrap.min.js"></script>
+		
+		&lt;style>
+			.container-narrow {
+		        margin: 0 auto;
+		        max-width: 700px;
+		      }
+		      .container-narrow > hr {
+		        margin: 30px 0;
+		      }
+		      .line {
+			      margin: 0 0 10px 0;
+		      }
+		&lt;/style>
+	&lt;/head>
+	
+	&lt;body>
+		&lt;div class="container-narrow">
+	
+	      &lt;div class="masthead">
+	        &lt;ul class="nav nav-pills pull-right">
+	          &lt;li class="active">&lt;a href="#">Home&lt;/a>&lt;/li>
+	        &lt;/ul>
+	        &lt;h3 class="muted">My Blog&lt;/h3>
+	      &lt;/div>
+	
+	      &lt;hr>
+	      &lt;?php 
+	      	foreach($newsItems as $item) {
+	      ?>
+		      &lt;div class="jumbotron">
+		      	&lt;h2><?php echo $item->news_title; ?>&lt;/h2>
+		      	&lt;p>&lt;small>Placed on: <?php echo $item->news_timestamp; ?>&lt;/small>&lt;/p>
+		      	&lt;hr class="line">
+		      	&lt;p>&lt;?php echo $item->news_description; ?>&lt;/p>
+		      		
+		      &lt;/div>
+		  &lt;?php
+		  }
+		  ?>
+	    &lt;/div>
+	&lt;/body>
+&lt;/html>
+		</pre>
+         <p>Well done! You can find your blog on <code>yourdomain/pathToMultiverse/news/</code>. If everything is working fine you have developed your first application on a new concept called API centric development. How was the experience? Hopefully you see benefits of Multiverse and I hope that you like to contribute to Multiverse to make this a way better framework!</p>
+         
+         
+         <p>If you saw things that could be way better in the implementation of Multiverse, don't hesitate to help me with this project to create a nice API centric framework! Hopefully you enjoyed this Getting Started with Multiverse section. If you want to know more about specific Multiverse subjects, look at the sidebar and you can find your way trough the documentation!</p>
+         
+         <a href="http://leandersikma.com/multiverse/MultiverseGettingStarted.zip"><button class="btn large-btn primary-btn">Download Getting Started code</button></a>
+         
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2012 Multiverse is created by <a href="http://leandersikma.com" title="Leander Sikma | Web and App developer">Leander Sikma</a> &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+  </body>
+</html>

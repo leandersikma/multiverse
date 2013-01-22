@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Documentation | Multiverse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <style type="text/css">
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      
+      .itemImage {
+	      height: 300px;
+	      background-position-y: top;
+      }
+      
+      .carousel-caption {
+	      margin-top: 100px;
+      }
+      
+      .carousel .item {
+	      height: 300px;
+	  }
+	  
+	  @media (max-width: 979px) {
+	  .itemImage {
+	      height: 200px;
+	      background-position-y: top;
+      }
+      
+      .carousel-caption {
+	      margin-top: 50px;
+      }
+      
+      .carousel .item {
+	      height: 200px;
+	  }
+	  
+	  }
+	  
+	  @media (max-width: 767px) {
+	  	.itemImage {
+	      height: 100px;
+	      background-position-y: top;
+      }
+      
+      .carousel-caption {
+	      margin-top: 10px;
+      }
+      
+      .carousel .item {
+	      height: 100px;
+	  }
+	  
+	  .carousel {
+		  margin-bottom: 20px;
+	  }
+	  }
+    </style>
+  
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <script src="js/javascript.js"></script>
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="index.html">Multiverse</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="index.html">Home</a></li>
+              <li class="active"><a href="docs.html">Docs</a></li>
+              <li><a href="Philosophy.html">Philosophy of Multiverse</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    
+    
+    <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+          <div class="itemImage"></div>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Multiverse</h1>
+              <p class="lead">And API and web framework packed in one thing!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav" id="navBar">
+
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+          	<div class="page-header">
+          		<h1>Class: Loader Extends: CoreController</h1>
+          	</div>
+          	
+          	<p>The Loader class is the class for loading view files or call a request to the API.</p>
+          	
+          	<h3>Perform a request to the API by using the Call function</h3>
+          	
+          	<p>If you want to get some data inside a controller from the API, you could perform this by using the call function from the Loader class. You can send 2 parameters with this function: <code>call($APIUrl, $params = null)</code>.</p>
+          	
+          	<dl>
+	        	<dt>$APIUrl</dt>
+	        	<dd>The url to call.</dd>
+	        	
+	        	<dt>$params</dt>
+	        	<dd>Is null if empty. Otherwise this data is send to the API as a POST request.</dd>
+	        </dl>
+	        
+	        <p>Example of an API request</p>
+	        
+	        <pre>
+$params = $this->handler->getParams(array('title', 'message'));
+$loginData = $this->load->call('api/news/create', $params);</pre>
+	        
+	        <p>This call will be send the parameters 'title' and 'message' as POST message to the API: <code>api/news/create</code></p>
+          	
+          	
+          	<h3>Loading a view</h3>
+          	
+          	<p>This subject is already explained in the <a href="APPViews.html">Application Views</a> part of this documentation.</p> 	      		
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2012 Multiverse is created by <a href="http://leandersikma.com" title="Leander Sikma | Web and App developer">Leander Sikma</a> &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+  </body>
+</html>
