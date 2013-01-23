@@ -43,7 +43,7 @@ class Loader extends CoreController {
         }
         
         $_output = ob_get_contents();
-        $this->output->appendOutput($output);
+        $this->output->appendOutput($_output);
 	}
 
 }
