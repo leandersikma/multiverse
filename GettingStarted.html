@@ -375,8 +375,8 @@ public function index() {
 	      	foreach($newsItems as $item) {
 	      ?>
 		      &lt;div class="jumbotron">
-		      	&lt;h2><?php echo $item->news_title; ?>&lt;/h2>
-		      	&lt;p>&lt;small>Placed on: <?php echo $item->news_timestamp; ?>&lt;/small>&lt;/p>
+		      	&lt;h2>&lt;?php echo $item->news_title; ?>&lt;/h2>
+		      	&lt;p>&lt;small>Placed on: &lt;?php echo $item->news_timestamp; ?>&lt;/small>&lt;/p>
 		      	&lt;hr class="line">
 		      	&lt;p>&lt;?php echo $item->news_description; ?>&lt;/p>
 		      		
